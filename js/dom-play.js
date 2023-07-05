@@ -31,12 +31,25 @@ function myAlert(){
     alert("I'm clicked!");
 }
 
+function highlightActor(actor){
+    //alert("the current actor is:" + actor);
+    for(const mySpan of spans){
+        if(actor == mySpan.dataset.actor){//current actor
+            mySpan.style.backgroundColor='blue';
+        }else{//other actor
+            mySpan.style.backgroundColor='white';
+        }
+    }    
+}
+
 const spans = document.querySelectorAll("#play span");
 
 console.log(spans);
 
 for(const mySpan of spans){
-    mySpan.addEventListener("click",myAlert);
-
+    //mySpan.addEventListener("click",myAlert);
+    mySpan.addEventListener("click",function(ev){
+        highlightActor(mySpan.dataset.actor);
+    });
 
 }
